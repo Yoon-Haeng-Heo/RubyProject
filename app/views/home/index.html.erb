@@ -1,0 +1,9 @@
+<h1>전체 글 목록입니다</h1>
+<a href="home/new">새 글 쓰기</a><br>
+
+<% Post.all.each do |p| %>
+    제 목 : <%=p.title%><br>
+    내 용 : <%=p.content%><br>
+    <a href="/home/destroy/<%=p.id%>">[삭 제]</a><br>
+    ================<br>
+<% end %>
