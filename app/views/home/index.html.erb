@@ -4,7 +4,10 @@
 <% Post.all.each do |p| %>
     제 목 : <%=p.title%><br>
     내 용 : <%=p.content%><br>
-    <a href="/home/destroy/<%=p.id%>">[삭 제]</a><br>
+    <a href="/home/destroy/<%=p.id%>">[삭 제]</a>
+    <%=link_to post_destroy_path(p.id)do%>
+        <button>삭제2</button>
+    <%end%>
     <a href="/home/edit/<%=p.id%>">[수 정]</a><br>
     ================<br>
 <% end %>

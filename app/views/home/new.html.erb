@@ -1,7 +1,12 @@
+
 <h2>새 글을 작성하는 페이지입니다</h2>
-<form action='/home/create' method='post'>
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    제 목: <input type='text' name="post_title"><br><br>
-    내 용: <textarea name="post_content"></textarea><br>
-    <input type="submit" value="작성">
-</form>
+
+<br>
+<%=form_for(@post) do |f|%>
+    <%=f.label :title, '제 목'%>
+    <%=f.text_field :title %><br>
+    <%=f.label :content, '내 용'%>
+    <%=f.text_area :content %><br>
+    <%=f.submit%>
+
+<%end%>
