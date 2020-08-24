@@ -11,8 +11,10 @@
 
 <%@post.comments.each do |comment|%>
     <%=comment.content %>
-    <%= link_to '[삭제]', post_comment_path(@post.id,comment.id), method: :delete %>
+    <%if comment.user_id == current_user.id %>
+        <%= link_to '[삭제]', post_comment_path(@post.id,comment.id), method: :delete %>
     <br>
+    <% end%>
 <%end %>
 <br>
 ----------------------------
