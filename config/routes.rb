@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
   devise_for :users, path: 'user', path_names:{sign_in: 'login', sign_out: 'logout'}
   root 'home#index'
   
-  resources :posts, controller:"home"
+  resources :posts, controller:"home" do
+    resources :comments, only: [:create, :destroy]
+  end
   
   
   # get 'home/index'

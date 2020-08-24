@@ -1,3 +1,20 @@
+
 제 목: <%=@post.title%>
 <br>
 내 용: <%=@post.content%>
+<br><br>-------------------------<br>
+<%=form_for Comment.new, url:post_comments_path(@post.id) do |f| %>
+    <%= f.label :content ,'댓글 내용'%>
+    <%= f.text_field :content %><br>
+    <%= f.submit '댓글 작성' %>
+<%end%>
+
+<%@post.comments.each do |comment|%>
+    <%=comment.content %>
+    <%= link_to '[삭제]', post_comment_path(@post.id,comment.id), method: :delete %>
+    <br>
+<%end %>
+<br>
+----------------------------
+<br><br>
+<%= link_to '뒤로 가기', '/' %>
