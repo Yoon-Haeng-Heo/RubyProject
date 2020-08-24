@@ -3,13 +3,16 @@
 
 <% Post.all.each do |p| %>
     제 목 : <%=p.title%><br>
-    내 용 : <%=p.content%><br>
+
+    <%= link_to post_path(p.id) do%>
+        <button>보기</button>
+    <%end %>
     <%=link_to post_path(p.id), method: :delete do%>
-        <button>삭제2</button>
+        <button>삭제</button>
     <%end%>
-    <br>
+    
     <%=link_to edit_post_path(p.id) do%>
-        <button>수정2</button>
+        <button>수정</button>
     <%end%>
     <br>
     ================<br>
