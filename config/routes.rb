@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'home#index'
-  
-  get 'home/index'
-  
-  get 'home/new'
 
-  post 'home/create', as: 'posts'
+  resources :posts, controller:"home"
   
-  get 'home/destroy/:post_id' =>'home#destroy', as: 'post_destroy'
+  
+  # get 'home/index'
+  
+  # get 'home/new'
 
-  get 'home/edit/:post_id' => 'home#edit'
+  # post 'home/create', as: 'posts'
+  
+  # get 'home/destroy/:post_id' =>'home#destroy', as: 'post_destroy'
 
-  patch 'home/update/:post_id' => 'home#update', as: 'post'
+  # get 'home/edit/:post_id' => 'home#edit'
+
+  # patch 'home/update/:post_id' => 'home#update', as: 'post'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

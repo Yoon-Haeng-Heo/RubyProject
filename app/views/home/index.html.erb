@@ -1,13 +1,16 @@
 <h1>전체 글 목록입니다</h1>
-<a href="home/new">새 글 쓰기</a><br>
+<%= link_to '새 글 쓰기', new_post_path %><br>
 
 <% Post.all.each do |p| %>
     제 목 : <%=p.title%><br>
     내 용 : <%=p.content%><br>
-    <a href="/home/destroy/<%=p.id%>">[삭 제]</a>
-    <%=link_to post_destroy_path(p.id)do%>
+    <%=link_to post_path(p.id), method: :delete do%>
         <button>삭제2</button>
     <%end%>
-    <a href="/home/edit/<%=p.id%>">[수 정]</a><br>
+    <br>
+    <%=link_to edit_post_path(p.id) do%>
+        <button>수정2</button>
+    <%end%>
+    <br>
     ================<br>
 <% end %>

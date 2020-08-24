@@ -1,12 +1,4 @@
-
 <h2>새 글을 작성하는 페이지입니다</h2>
 
 <br>
-<%=form_for(@post) do |f|%>
-    <%=f.label :title, '제 목'%>
-    <%=f.text_field :title %><br>
-    <%=f.label :content, '내 용'%>
-    <%=f.text_area :content %><br>
-    <%=f.submit%>
-
-<%end%>
+<%=render 'form'%>
