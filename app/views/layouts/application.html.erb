@@ -13,10 +13,11 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%if user_signed_in?%>
-      <%= current_user.email %>
-        <%= link_to '로그아웃',  destroy_user_session_path, method: :delete %>
+      <%= current_user.email %><br>
+        <%= link_to '로그아웃',  destroy_user_session_path, method: :delete %> /
+        <%= link_to '회원 정보 수정',  edit_user_registration_path %>
     <%else%>
-      <%= link_to '회원 가입', new_user_registration_path %> 
+      <%= link_to '회원 가입', new_user_registration_path %> /
       <%= link_to '로그인', new_user_session_path %>
     <%end %>
     <br>
