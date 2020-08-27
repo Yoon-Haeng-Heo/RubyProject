@@ -1,0 +1,7 @@
+<%= params %>
+<%= form_for(@comment, url:post_comment_path,method:"put") do |f| %>
+    <%=f.label :content, '내 용'%>
+    <br><br><br>
+    <%=f.text_area :content %><br>
+    <%=f.submit%>
+<%end%>

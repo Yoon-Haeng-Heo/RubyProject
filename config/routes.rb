@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  
   get 'comments/create'
   get 'comments/destroy'
+  get 'comments/edit'
+  patch 'comments/update'
   devise_for :users, path: 'user', path_names:{sign_in: 'login', sign_out: 'logout'}
   root 'home#index'
   
   resources :posts, controller:"home" do
-    resources :comments, only: [:create, :destroy]
+    resources :comments #only: [:edit,:create, :destroy,:update]
   end
   
   
