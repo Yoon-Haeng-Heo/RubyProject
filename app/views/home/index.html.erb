@@ -3,7 +3,11 @@
 <div class="container-fluid">
 
   <h1>전체 글 목록입니다</h1>
+  <%if user_signed_in?%>
   <%= link_to '새 글 쓰기', new_post_path %><br>
+  <% else%>
+  <div class ='text-danger' >글을 작성하려면 로그인 하세요!</div><br>
+  <% end%>
         <% Post.all.each do |p| %>
             제 목 : <%=p.title%><br>
 
