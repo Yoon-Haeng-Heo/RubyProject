@@ -3,6 +3,13 @@
 <br>
 내 용: <%=@post.content%>
 <br><br>-------------------------<br>
+<p>
+    <%@post.hashtags.each do |h| %>
+        <strong>
+            #<%=h.title  %>
+        </strong>
+    <% end%>
+</p>
 <%=form_for Comment.new, url:post_comments_path(@post.id) do |f| %>
     <%= f.label :content ,'댓글 내용'%>
     <%= f.text_field :content %><br>
@@ -10,7 +17,7 @@
 <%end%>
 
 <%@post.comments.each do |comment|%>
-    <%=comment.content %>
+    <br><%=comment.content %>
     <%if comment.user_id == current_user.id %>
         <%= link_to '[삭제]', post_comment_path(@post.id,comment.id), method: :delete %>
         <%= link_to '[수정]', edit_post_comment_path(@post.id,comment.id)%>

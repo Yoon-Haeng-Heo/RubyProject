@@ -1,19 +1,33 @@
 <h1>전체 글 목록입니다</h1>
 <%= link_to '새 글 쓰기', new_post_path %><br>
+<div class="container-fluid">
+    <% Post.all.each do |p| %>
+        제 목 : <%=p.title%><br>
 
-<% Post.all.each do |p| %>
-    제 목 : <%=p.title%><br>
-
-    <%= link_to post_path(p.id) do%>
-        <button>보기</button>
-    <%end %>
-    <%=link_to post_path(p.id), method: :delete do%>
-        <button>삭제</button>
-    <%end%>
+        <%= link_to post_path(p.id) do%>
+            <btn>보기</btn>
+        <%end %>
+        <%=link_to post_path(p.id), method: :delete do%>
+            <button>삭제</button>
+        <%end%>
     
-    <%=link_to edit_post_path(p.id) do%>
-        <button>수정</button>
-    <%end%>
-    <br>
-    ================<br>
-<% end %>
+        <%=link_to edit_post_path(p.id) do%>
+            <button>수정</button>
+        <%end%>
+        <br>
+        ================<br>
+    <% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>

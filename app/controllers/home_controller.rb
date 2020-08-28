@@ -8,6 +8,7 @@ class HomeController < ApplicationController
 
   def new
     @post = Post.new
+    3.times { @post.hashtags.new }
   end
 
   def show
@@ -15,6 +16,12 @@ class HomeController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    3.times do |x|
+      tag = hashtag_params[:hashtags_attributes]["#{x}"][:title]
+      addHashtag = Hashtag.find_or_create_by(title: tag)
+
+      @post.hashtags << addHashtag
+    end
     respond_to do |format|
       if @post.save
         format.html{ redirect_to root_path, notice: '게시물이 성공적으로 작성되었습니다!'}
@@ -22,6 +29,9 @@ class HomeController < ApplicationController
         format.html{ render :new }
       end
     end
+    # params[:hashtags_attributes][0 or 1 or 2 여기는 번호가 들어감][:title] => 이렇게 뽑아야 나옴
+    # "hashtags_attributes"=>
+    # { "0"=>{"title"=>"하나"}, "1"=>{"title"=>"둘"}, "2"=>{"title"=>"셋"} }
   end
 
   def destroy
@@ -57,5 +67,8 @@ class HomeController < ApplicationController
     params.require(:post).permit(:title, :content)
   end
   
+  def hashtag_params
+    params.require(:post).permit(hashtags_attributes: [:title])
+  end
 
 end
