@@ -13,14 +13,14 @@
 
             <%= link_to post_path(p.id) do%>
                 <btn>보기</btn>
-            <%end %>
+            <%end %> /
             <%=link_to post_path(p.id), method: :delete do%>
                 <btn>삭제</btn>
-            <%end%>
+            <%end%> /
     
             <%=link_to edit_post_path(p.id) do%>
                 <btn>수정</btn>
-            <%end%>
+            <%end%> /
             <br>
             ================<br>
         <% end %>
